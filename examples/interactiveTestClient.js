@@ -232,14 +232,6 @@ var placeCoverOrder = async function (placeCoverOrderRequest) {
 
 }
 
-var placeCoverOrder = async function (exchangeSegment, exchangeInstrumentID, orderSide, orderQuantity, disclosedQuantity, limitPrice, stopPrice, orderUniqueIdentifier) {
-
-    let response = await xtsInteractive.placeCoverOrder(exchangeSegment, exchangeInstrumentID, orderSide, orderQuantity, disclosedQuantity, limitPrice, stopPrice, orderUniqueIdentifier);
-    console.log(response);
-    return response;
-
-}
-
 var exitCoverOrder = async function (appOrderID) {
 
     let response = await xtsInteractive.exitCoverOrder(appOrderID);
