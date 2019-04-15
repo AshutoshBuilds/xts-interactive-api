@@ -220,7 +220,7 @@ Calls GET  /users/profile
 
 Below is the brief information related to  streaming events provided by XTS-Interactive-API SDK.
 ```js
-	xtsInteractiveWS = new XTSInteractiveWS(“https://symphonyfintech.com”); Create a websocket client instance.
+	xtsInteractiveWS = new XTSInteractiveWS(“https://symphonyfintech.com”); // Create a websocket client instance.
         var socketInitRequest = {
             userID: “PAVAN”,
             token: logIn.result.token   // Token Generated after successful LogIn
