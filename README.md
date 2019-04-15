@@ -33,6 +33,7 @@ xtsInteractive = new XTSInteractive(“https://symphonyfintech.com”);
 call the login API to generate the token
 
 ```js
+
 var loginRequest ={
 	"userID": "PAVAN",
 	"password": "Abcd@123",
