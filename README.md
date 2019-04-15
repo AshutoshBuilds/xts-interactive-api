@@ -226,7 +226,7 @@ Below is the brief information related to  streaming events provided by XTS-Inte
             userID: “PAVAN”,
             token: logIn.result.token   // Token Generated after successful LogIn
         }
-```js
+```
 
 ```js
     xtsInteractiveWS.init(socketInitRequest); Init the socket instance
