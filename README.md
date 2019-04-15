@@ -14,7 +14,7 @@ Please request for apikeys with Symphony Fintech developer support team to start
 
 ## Installation 
 ```bash
-   npm install node-xts-interactive-api
+npm install node-xts-interactive-api
 ```
 
 ## Usage
@@ -27,20 +27,20 @@ var XTSInteractive = require('node-xts-interactive-api').Interactive;
 Creating the instance of xtsInteractive
 
 ```js
-    xtsInteractive = new XTSInteractive(“https://symphonyfintech.com”);   
+xtsInteractive = new XTSInteractive(“https://symphonyfintech.com”);   
 ```
 
 call the login API to generate the token
 
 ```js
-  var loginRequest ={
-    "userID": "PAVAN",
-    "password": "Abcd@123",
-    "publicKey": "5a75a3616cabe678",
-    "source": "WEBAPI",
+var loginRequest ={
+	"userID": "PAVAN",
+	"password": "Abcd@123",
+	"publicKey": "5a75a3616cabe678",
+	"source": "WEBAPI",
 }
 
-    let logIn = await xtsInteractive.logIn(loginRequest);
+let logIn = await xtsInteractive.logIn(loginRequest);
 ```
 
 Once the token is generated you can call any api provided in the documentation. All API’s are easy  to integrate and implemented with async-await mechanism.
@@ -48,7 +48,9 @@ Below is the sample Code snippet which calls the balance API.
 
 ```js
 let balance = await xtsInteractive.getBalance();
- console.log(balance);
+
+console.log(balance);
+
 ```
 ## Instantiating the XTSInteractiveWS
 
@@ -57,41 +59,41 @@ After token is generated, you can access the socket component and instantiate th
 
 ```js
 var XTSInteractiveWS = require('node-xts-interactive-api').WS;
-        xtsInteractiveWS = new XTSInteractiveWS(“https://api.symphonyfintech.com”);
-        var socketInitRequest = {
-            userID: “PAVAN”,
-            token: logIn.result.token   // Token Generated after successful LogIn
-        }
-        xtsInteractiveWS.init(socketInitRequest);
+xtsInteractiveWS = new XTSInteractiveWS(“https://api.symphonyfintech.com”);
+var socketInitRequest = {
+	userID: “PAVAN”,
+	token: logIn.result.token   // Token Generated after successful LogIn
+}
+xtsInteractiveWS.init(socketInitRequest);
 ```
 
 You can now register events to listen to the real time order and trade updates and will be receiving the json objects in the response.
 
 ```js
-    xtsInteractiveWS.onConnect((connectData) => {
-        console.log(connectData);
-    });
-    xtsInteractiveWS.onJoined((joinedData) => {
-        console.log(joinedData);    
-    });
-    xtsInteractiveWS.onError((errorData) => {
-        console.log(errorData); 
-    });
-    xtsInteractiveWS.onDisconnect((disconnectData) => {   
-        console.log(disconnectData);
-    });
-    xtsInteractiveWS.onOrder((orderData) => {
-        console.log(orderData);
-    });
-    xtsInteractiveWS.onTrade((tradeData) => {
-        console.log(tradeData);
-    });
-    xtsInteractiveWS.onPosition((positionData) => {
-        console.log(positionData);
-    });
-    xtsInteractiveWS.onLogout((logoutData) => {
-        console.log(logoutData);
-    });
+xtsInteractiveWS.onConnect((connectData) => {
+	console.log(connectData);
+});
+xtsInteractiveWS.onJoined((joinedData) => {
+	console.log(joinedData);    
+});
+xtsInteractiveWS.onError((errorData) => {
+	console.log(errorData); 
+});
+xtsInteractiveWS.onDisconnect((disconnectData) => {   
+	console.log(disconnectData);
+});
+xtsInteractiveWS.onOrder((orderData) => {
+	console.log(orderData);
+});
+xtsInteractiveWS.onTrade((tradeData) => {
+	console.log(tradeData);
+});
+xtsInteractiveWS.onPosition((positionData) => {
+	console.log(positionData);
+});
+xtsInteractiveWS.onLogout((logoutData) => {
+	console.log(logoutData);
+});
 ```
 
 ## Detailed explanation of API and socket related events
@@ -105,18 +107,18 @@ Calls POST /order.
 
 ```js
 let response = await xtsInteractive.placeOrder({
-        exchangeSegment: xtsInteractive.exchangeInfo.NSECM,
-        exchangeInstrumentID: 22,
-        productType: xtsInteractive.productTypes.MIS,
-        orderType: xtsInteractive.orderTypes.Limit,
-        orderSide: xtsInteractive.orderSide.BUY,
-        timeInForce: xtsInteractive.dayOrNet.DAY,
-        disclosedQuantity: 0,
-        orderQuantity: 20,
-        limitPrice: 1500.00,
-        stopPrice: 1600.00,
-        orderUniqueIdentifier: "45485"
-     });
+	exchangeSegment: xtsInteractive.exchangeInfo.NSECM,
+	exchangeInstrumentID: 22,
+	productType: xtsInteractive.productTypes.MIS,
+	orderType: xtsInteractive.orderTypes.Limit,
+	orderSide: xtsInteractive.orderSide.BUY,
+	timeInForce: xtsInteractive.dayOrNet.DAY,
+	disclosedQuantity: 0,
+	orderQuantity: 20,
+	limitPrice: 1500.00,
+	stopPrice: 1600.00,
+	orderUniqueIdentifier: "45485"
+});
 ```
 
 ## modifyOrder 
@@ -125,16 +127,16 @@ Calls PUT /order.
 
 ```js
 let response = await xtsInteractive.modifyOrder({
-        appOrderID: 1991237756,
-        modifiedProductType: xtsInteractive.productTypes.NRML,
-        modifiedOrderType: xtsInteractive.orderTypes.Limit,
-        modifiedOrderQuantity: 100,
-        modifiedDisclosedQuantity: 0,
-        modifiedLimitPrice: 300,
-        modifiedStopPrice: 300,
-        modifiedTimeInForce: xtsInteractive.dayOrNet.DAY,
-        orderUniqueIdentifier: "5656"
-    });
+	appOrderID: 1991237756,
+	modifiedProductType: xtsInteractive.productTypes.NRML,
+	modifiedOrderType: xtsInteractive.orderTypes.Limit,
+	modifiedOrderQuantity: 100,
+	modifiedDisclosedQuantity: 0,
+	modifiedLimitPrice: 300,
+	modifiedStopPrice: 300,
+	modifiedTimeInForce: xtsInteractive.dayOrNet.DAY,
+	orderUniqueIdentifier: "5656"
+});
 ```
 ## cancelOrder
 
@@ -142,9 +144,9 @@ Calls DELETE /order.
 
 ```js
 let response = await xtsInteractive.cancelOrder({
-      appOrderID: 1828071433,
-      orderUniqueIdentifier: 155151
-    });
+	appOrderID: 1828071433,
+	orderUniqueIdentifier: 155151
+});
 ```
 ## placeCoverOrder
 
@@ -152,15 +154,15 @@ Calls POST /order/cover.
 
 ```js
 let response = await xtsInteractive.placeCoverOrder({
-        exchangeSegment: xtsInteractive.exchangeInfo.NSECM,
-        exchangeInstrumentID: 22,
-        orderSide: xtsInteractive.orderSide.BUY,
-        orderQuantity: 2,
-        disclosedQuantity: 2,
-        limitPrice: 2054,
-        stopPrice: 2054,
-        orderUniqueIdentifier: "45485"
-    });
+	exchangeSegment: xtsInteractive.exchangeInfo.NSECM,
+	exchangeInstrumentID: 22,
+	orderSide: xtsInteractive.orderSide.BUY,
+	orderQuantity: 2,
+	disclosedQuantity: 2,
+	limitPrice: 2054,
+	stopPrice: 2054,
+	orderUniqueIdentifier: "45485"
+});
 ```
 
 ## exitCoverOrder
@@ -182,7 +184,7 @@ let response = await xtsInteractive.getOrderBook();
 calls GET /order/trade
 
 ```js
-  let response = await xtsInteractive.getTradeBook();
+let response = await xtsInteractive.getTradeBook();
 ```
 ## Positions API
 ## getPositions
@@ -191,20 +193,20 @@ calls GET /portfolio/position
 
 ```js
 let response = await xtsInteractive.getPositions( {
-        dayOrNet: xtsInteractive.dayOrNet.DAY
-    });
+	dayOrNet: xtsInteractive.dayOrNet.DAY
+});
 ```
 ## positionConversion
 
  Calls PUT /portfolio/position/convert
  
 ```js
- let response = await xtsInteractive.positionConversion({
-        appOrderID: 1991237756,
-        executionID: 1556,
-        oldProductType: xtsInteractive.productTypes.NRML,
-        newProductType: xtsInteractive.productTypes.MIS
-    });
+let response = await xtsInteractive.positionConversion({
+	appOrderID: 1991237756,
+	executionID: 1556,
+	oldProductType: xtsInteractive.productTypes.NRML,
+	newProductType: xtsInteractive.productTypes.MIS
+});
 ```
 ## squareOff
 
@@ -212,13 +214,13 @@ Calls PUT /portfolio/squareoff
 
 ```js
 let response = await xtsInteractive.squareOff({
-        exchangeSegment: xtsInteractive.exchangeInfo.NSECM,
-        exchangeInstrumentID: 22,
-        productType: xtsInteractive.productTypes.NRML,
-        squareoffMode: xtsInteractive.positionSqureOffMode.DayWise,
-        positionSquareOffQuantityType: xtsInteractive.positionSquareOffQuantityType.ExactQty,
-        squareOffQtyValue: 5
-    });
+	exchangeSegment: xtsInteractive.exchangeInfo.NSECM,
+	exchangeInstrumentID: 22,
+	productType: xtsInteractive.productTypes.NRML,
+	squareoffMode: xtsInteractive.positionSqureOffMode.DayWise,
+	positionSquareOffQuantityType: xtsInteractive.positionSquareOffQuantityType.ExactQty,
+	squareOffQtyValue: 5
+});
 ```
 
 ## Holdings API
@@ -243,7 +245,7 @@ let response = await xtsInteractive.getBalance();
 Calls GET  /users/profile
 
 ```js
-    let response = await xtsInteractive.getProfile();
+let response = await xtsInteractive.getProfile();
 ```
 
 Below is the brief information related to  streaming events provided by XTS-Interactive-API SDK.
