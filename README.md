@@ -98,9 +98,9 @@ Below is the brief information related to api’s  provided by XTS-Interactive-A
 
 ## Orders API
 ## placeOrder 
-```bash
+
 Calls POST /order.
-```
+
 ```js
 let response = await xtsInteractive.placeOrder({
         exchangeSegment: xtsInteractive.exchangeInfo.NSECM,
@@ -116,8 +116,11 @@ let response = await xtsInteractive.placeOrder({
         orderUniqueIdentifier: "45485"
      });
 ```
-modifyOrder 
+
+## modifyOrder 
+
 Calls PUT /order.
+
 ```js
 let response = await xtsInteractive.modifyOrder({
         appOrderID: 1991237756,
@@ -131,16 +134,20 @@ let response = await xtsInteractive.modifyOrder({
         orderUniqueIdentifier: "5656"
     });
 ```
-cancelOrder
+## cancelOrder
+
 Calls DELETE /order.
+
 ```js
 let response = await xtsInteractive.cancelOrder({
         appOrderID: 1828071433,
       orderUniqueIdentifier: 155151
     });
 ```
-placeCoverOrder
+## placeCoverOrder
+
 Calls POST /order/cover.
+
 ```js
 let response = await xtsInteractive.placeCoverOrder({
         exchangeSegment: xtsInteractive.exchangeInfo.NSECM,
@@ -154,31 +161,41 @@ let response = await xtsInteractive.placeCoverOrder({
     });
 ```
 
-exitCoverOrder
+## exitCoverOrder
+
 Calls PUT /order/cover.
+
 ```js
 let response = await xtsInteractive.exitCoverOrder("2426016103"));
 ```
-getOrderBook
+## getOrderBook
+
 calls GET /order
+
 ```js
 let response = await xtsInteractive.getOrderBook();
 ```
-getTradeBook
+## getTradeBook
+
 calls GET /order/trade
+
 ```js
   let response = await xtsInteractive.getTradeBook();
 ```
-Positions API
-getPositions
+## Positions API
+## getPositions
+
 calls GET /portfolio/position
+
 ```js
 let response = await xtsInteractive.getPositions( {
         dayOrNet: xtsInteractive.dayOrNet.DAY
     });
 ```
-PositionConversion
+## PositionConversion
+
  Calls PUT /portfolio/position/convert
+ 
 ```js
  let response = await xtsInteractive.positionConversion({
         appOrderID: 1991237756,
@@ -187,8 +204,10 @@ PositionConversion
         newProductType: xtsInteractive.productTypes.MIS
     });
 ```
-squareOff
+## squareOff
+
 Calls PUT /portfolio/squareoff
+
 ```js
 let response = await xtsInteractive.squareOff({
         exchangeSegment: xtsInteractive.exchangeInfo.NSECM,
@@ -200,26 +219,33 @@ let response = await xtsInteractive.squareOff({
     });
 ```
 
-Holdings API
-getHoldings
+## Holdings API
+## getHoldings
+
 Calls GET  /portfolio/holding
+
 ```js
 let response = await xtsInteractive.getHoldings();
 ```
-Balance API
-getBalance
+## Balance API
+## getBalance
+
 Calls GET  /users/balance
+
 ```js    
 let response = await xtsInteractive.getBalance();
 ```
-Profile API
-getProfile
+## Profile API
+## getProfile
+
 Calls GET  /users/profile
+
 ```js
     let response = await xtsInteractive.getProfile();
 ```
 
 Below is the brief information related to  streaming events provided by XTS-Interactive-API SDK.
+
 ```js
 	xtsInteractiveWS = new XTSInteractiveWS(“https://symphonyfintech.com”); // Create a websocket client instance.
         var socketInitRequest = {
