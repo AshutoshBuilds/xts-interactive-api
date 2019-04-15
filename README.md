@@ -142,7 +142,7 @@ Calls DELETE /order.
 
 ```js
 let response = await xtsInteractive.cancelOrder({
-        appOrderID: 1828071433,
+      appOrderID: 1828071433,
       orderUniqueIdentifier: 155151
     });
 ```
@@ -250,14 +250,14 @@ Below is the brief information related to  streaming events provided by XTS-Inte
 
 ```js
     xtsInteractiveWS.init(socketInitRequest); Init the socket instance
-xtsInteractiveWS.onConnect((connectData) => {}); //registering for Connect event
- xtsInteractiveWS.onJoined((joinedData) => {});//registering for Joined event
- xtsInteractiveWS.onError((errorData) => {});//registering for Error event
- xtsInteractiveWS.onDisconnect((disconnectData) => { });//registering for Disconnect event
-xtsInteractiveWS.onOrder((orderData) => {});//registering for Order event
-xtsInteractiveWS.onTrade((tradeData) => {});//registering for Trade event
-xtsInteractiveWS.onPosition((positionData) => { });//registering for Position event
-xtsInteractiveWS.onLogout((logoutData) => {});//registering for Logout event
+	xtsInteractiveWS.onConnect((connectData) => {}); //registering for Connect event
+	xtsInteractiveWS.onJoined((joinedData) => {});//registering for Joined event
+	xtsInteractiveWS.onError((errorData) => {});//registering for Error event
+	xtsInteractiveWS.onDisconnect((disconnectData) => { });//registering for Disconnect event
+	xtsInteractiveWS.onOrder((orderData) => {});//registering for Order event
+	xtsInteractiveWS.onTrade((tradeData) => {});//registering for Trade event
+	xtsInteractiveWS.onPosition((positionData) => { });//registering for Position event
+	xtsInteractiveWS.onLogout((logoutData) => {});//registering for Logout event
 ```
 We do have a market data component which will provide the streaming of our real-time streaming market data.  For more info please check the following link.
 
