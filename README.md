@@ -1,6 +1,8 @@
 # XTS-Interactive-API
 Welcome to the XTS-Interactive-API SDK, This repository is Official Node.js library for Symphony XTS-Interactive-API.  
+
 API Documentation for XTS-trading API can be found in the below link.
+
 https://symphonyfintech.com/xts-trading-front-end-api/
 
 The XTS Trading API provides developer, data-scientist, financial analyst and investor the functionality necessary to create automated trading strategies, as well as other trading related applications with support of XTS OEMS hosted by Financial Institutions to trade with Indian electronic exchanges. 
@@ -192,7 +194,7 @@ let response = await xtsInteractive.getPositions( {
         dayOrNet: xtsInteractive.dayOrNet.DAY
     });
 ```
-## PositionConversion
+## positionConversion
 
  Calls PUT /portfolio/position/convert
  
