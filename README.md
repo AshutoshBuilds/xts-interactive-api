@@ -91,6 +91,7 @@ You can now register events to listen to the real time order and trade updates a
         console.log(logoutData);
     });
 ```
+
 ## Detailed explanation of API and socket related events
 
 Below is the brief information related to api’s  provided by XTS-Interactive-API SDK.
