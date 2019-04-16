@@ -252,7 +252,7 @@ let response = await xtsInteractive.getProfile();
 Below is the brief information related to  streaming events provided by XTS-Interactive-API SDK.
 
 ```js
-xtsInteractiveWS.init(socketInitRequest); Init the socket instance
+xtsInteractiveWS.init(socketInitRequest); // Init the socket instance
 xtsInteractiveWS.onConnect((connectData) => {}); //registering for Connect event
 xtsInteractiveWS.onJoined((joinedData) => {});//registering for Joined event
 xtsInteractiveWS.onError((errorData) => {});//registering for Error event
