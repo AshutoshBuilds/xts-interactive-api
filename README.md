@@ -14,20 +14,20 @@ Please request for apikeys with Symphony Fintech developer support team to start
 
 ## Installation 
 ```bash
-npm install node-xts-interactive-api
+npm install xts-interactive-api
 ```
 
 ## Usage
 
-Access the interactive component of node-xts-interactive-api like below. 
+Access the interactive component of xts-interactive-api like below. 
 ```js
-var XTSInteractive = require('node-xts-interactive-api').Interactive;
+var XTSInteractive = require('xts-interactive-api').Interactive;
 ```
 
 Creating the instance of xtsInteractive
 
 ```js
-xtsInteractive = new XTSInteractive(“https://symphonyfintech.com”);   
+xtsInteractive = new XTSInteractive(“https://api.symphonyfintech.com”);   
 ```
 
 call the login API to generate the token
@@ -59,7 +59,7 @@ This component provides functionality to access the socket related events. All r
 After token is generated, you can access the socket component and instantiate the socket Instance and call the init method of the socket like below
 
 ```js
-var XTSInteractiveWS = require('node-xts-interactive-api').WS;
+var XTSInteractiveWS = require('xts-interactive-api').WS;
 xtsInteractiveWS = new XTSInteractiveWS(“https://api.symphonyfintech.com”);
 var socketInitRequest = {
 	userID: “PAVAN”,
