@@ -1,7 +1,7 @@
 //Accessing the Interactive and WS from node-xts-interactive-api library
 
-var XTSInteractive = require('node-xts-interactive-api').Interactive;
-var XTSInteractiveWS = require('node-xts-interactive-api').WS;
+var XTSInteractive = require('xts-interactive-api').Interactive;
+var XTSInteractiveWS = require('xts-interactive-api').WS;
 
 var config = require('./config/config.json');
 
