@@ -1,9 +1,6 @@
 {
     "socket": {
-        "connect": "connect",
         "joined": "joined",
-        "error": "error",
-        "disconnect": "disconnect",
         "order": "order",
         "trade": "trade",
         "position": "position",
@@ -20,6 +17,7 @@
         "position": "/portfolio/positions",
         "convert": "/portfolio/positions/convert",
         "squareoff": "/portfolio/squareoff",
+        "orderHistory": "/orders",
 		"enums": "/user/enums"
     }
 }

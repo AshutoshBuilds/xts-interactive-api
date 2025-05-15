@@ -7,7 +7,7 @@ https://symphonyfintech.com/xts-trading-front-end-api/
 
 The XTS Trading API provides developer, data-scientist, financial analyst and investor the functionality necessary to create automated trading strategies, as well as other trading related applications with support of XTS OEMS hosted by Financial Institutions to trade with Indian electronic exchanges. 
 
-With the use of the socket.io library, the API has streaming capability and will push data notifications in a JSON format. Your application can place orders and receive real-time trade notification.
+With the use of the socket.io-client library (v4.x), the API has streaming capability and will push data notifications in a JSON format. Your application can place orders and receive real-time trade notification.
 
 There is also an examples folder available which illustrates how to create a connection to XTS OEMS hosted by Brokers to subscribe to real-time events.
 Please request for apikeys with Symphony Fintech developer support team to start integrating your application with XTS OEMS.
@@ -27,13 +27,12 @@ var XTSInteractive = require('xts-interactive-api').Interactive;
 Creating the instance of xtsInteractive
 
 ```js
-xtsInteractive = new XTSInteractive(“https://api.symphonyfintech.com”);   
+xtsInteractive = new XTSInteractive("https://api.symphonyfintech.com");   
 ```
 
 call the login API to generate the token
 
 ```js
-
 var loginRequest ={
 	"userID": "PAVAN",
 	"password": "Abcd@123",
@@ -44,15 +43,35 @@ var loginRequest ={
 let logIn = await xtsInteractive.logIn(loginRequest);
 ```
 
-Once the token is generated you can call any api provided in the documentation. All API’s are easy  to integrate and implemented with async-await mechanism.
+Once the token is generated you can call any api provided in the documentation. All API's are easy to integrate and implemented with async-await mechanism.
 Below is the sample Code snippet which calls the balance API.
 
 ```js
 let balance = await xtsInteractive.getBalance();
 
 console.log(balance);
-
 ```
+
+Alternatively, if you already have a valid session token and user ID (e.g., from a previous session or a different authentication mechanism), you can initialize the SDK using `loginWithToken`:
+
+```js
+// Assuming xtsInteractive is already instantiated: const xtsInteractive = new XTSInteractive("YOUR_API_URL_OR_LEAVE_UNDEFINED_FOR_DEFAULT");
+const userIDForTokenLogin = "YOUR_USER_ID";
+const existingToken = "YOUR_EXISTING_TOKEN";
+
+try {
+  const loginResponseWithToken = await xtsInteractive.loginWithToken(userIDForTokenLogin, existingToken);
+  if (loginResponseWithToken.type === 'success') {
+    console.log("Successfully logged in with token.");
+    // You can now use other API methods, e.g., xtsInteractive.getProfile();
+  } else {
+    console.error("Failed to login with token:", loginResponseWithToken);
+  }
+} catch (error) {
+  console.error("Error during loginWithToken:", error);
+}
+```
+
 ## Instantiating the XTSInteractiveWS
 
 This component provides functionality to access the socket related events. All real-time events can be registered via XTSInteractiveWS.
@@ -60,9 +79,9 @@ After token is generated, you can access the socket component and instantiate th
 
 ```js
 var XTSInteractiveWS = require('xts-interactive-api').WS;
-xtsInteractiveWS = new XTSInteractiveWS(“https://api.symphonyfintech.com”);
+xtsInteractiveWS = new XTSInteractiveWS("https://api.symphonyfintech.com");
 var socketInitRequest = {
-	userID: “PAVAN”,
+	userID: "PAVAN",
 	token: logIn.result.token   // Token Generated after successful LogIn
 }
 xtsInteractiveWS.init(socketInitRequest);
@@ -99,7 +118,7 @@ xtsInteractiveWS.onLogout((logoutData) => {
 
 ## Detailed explanation of API and socket related events
 
-Below is the brief information related to api’s  provided by XTS-Interactive-API SDK.
+Below is the brief information related to APIs provided by XTS-Interactive-API SDK.
 
 ## Orders API
 ## placeOrder 
@@ -171,7 +190,7 @@ let response = await xtsInteractive.placeCoverOrder({
 Calls PUT /order/cover.
 
 ```js
-let response = await xtsInteractive.exitCoverOrder("2426016103"));
+let response = await xtsInteractive.exitCoverOrder({ appOrderID: "2426016103" });
 ```
 ## getOrderBook
 
@@ -249,7 +268,7 @@ Calls GET  /users/profile
 let response = await xtsInteractive.getProfile();
 ```
 
-Below is the brief information related to  streaming events provided by XTS-Interactive-API SDK.
+Below is the brief information related to streaming events provided by XTS-Interactive-API SDK.
 
 ```js
 xtsInteractiveWS.init(socketInitRequest); // Init the socket instance
@@ -265,3 +284,22 @@ xtsInteractiveWS.onLogout((logoutData) => {});//registering for Logout event
 We do have a market data component which will provide the streaming of our real-time streaming market data.  For more info please check the following link.
 
 https://symphonyfintech.com/xts-market-data-front-end-api/
+
+## getOrderHistory
+
+Retrieves the history for a specific order.
+
+```js
+const appOrderID = "YOUR_APP_ORDER_ID"; // Replace with the actual AppOrderID
+let response = await xtsInteractive.getOrderHistory(appOrderID);
+console.log(response);
+```
+
+## Testing
+
+This library uses Jest for testing. To run the tests:
+
+1. Ensure you have installed the development dependencies: `npm install` (if you haven't already).
+2. Run the test script: `npm test`
+
+This will execute all test suites and provide a summary of the results.
